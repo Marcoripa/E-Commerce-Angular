@@ -1,9 +1,39 @@
-<div class="search-container">
-  <form class="search-form" #form="ngForm">
-    <span class="logo" routerLink="/">Marco's E-commerce</span>
-    <input class="search-input" name="search" ngModel placeholder="What are you looking for?"/>
-    <button class="search-button" (click)="newMessage()">Search</button>
-  </form>
-</div>
+<nav>
+  <h1 class="logo">Marco's E-commerce</h1>
+  <div class="search-container">
+    <select [ngModel]="selected" (ngModelChange)="onChange($event)">
+      <option value="category/electronics">Electronics</option>
+      <option value="category/jewelery">Jewelery</option>
+      <option value="category/men's clothing">Men's clothing</option>
+      <option value="category/women's clothing">Women's clothing</option>
+      <option value="">All the items</option>
+    </select>
 
-<!-- (submit)="onSubmit(form)" -->
+    <form (ngSubmit)="submitInput()" >
+      <input
+        type="text"
+        ngModel
+        name="input"
+        placeholder="What are you looking for?"
+        (ngModelChange)="inputChange($event)"
+        class="search-input"
+      />
+      <button type="submit" class="search-button">search</button>
+    </form>
+
+    <div>
+      <input
+        type="range"
+        id="volume"
+        name="price"
+        min="min"
+        max="999.99"
+        step="1"
+        ngModel
+        (ngModelChange)="priceChange($event)"
+      />
+
+      <label for="price">Price</label>
+    </div>
+  </div>
+</nav>

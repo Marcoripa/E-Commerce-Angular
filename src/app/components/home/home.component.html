@@ -1,25 +1,3 @@
-<div class="search-container">
-  <select [ngModel]="selected" (ngModelChange)="onChange($event)">
-    <option value="category/electronics">Electronics</option>
-    <option value="category/jewelery">Jewelery</option>
-    <option value="category/men's clothing">Men's clothing</option>
-    <option value="category/women's clothing">Women's clothing</option>
-    <option value="">All the items</option>
-  </select>
-
-<form (ngSubmit)="submitInput()">
-  <input type="text" ngModel name="input" (ngModelChange)="inputChange($event)">
-  <button type="submit">search</button>
-</form>
-
-<div>
-  <input type="range" id="volume" name="price"
-         min="min" max="999.99" step="1" ngModel (ngModelChange)="priceChange($event)">
-         
-  <label for="price">Price</label>
-</div>
-</div>
-
 <div class="home">
   <div class="item" *ngFor="let item of renderedItems">
     <div class="item-image">

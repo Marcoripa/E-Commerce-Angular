@@ -5,12 +5,28 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class DataService {
-  public messageSource = new BehaviorSubject<string>('electronics');
-  currentMessage = this.messageSource.asObservable()
-
   constructor() {}
 
-  changeMessage(message: string) {
-    this.messageSource.next(message)
+  private startItemsSource = new BehaviorSubject([]);
+  currentStartItems = this.startItemsSource.asObservable();
+
+  private renderItemsSource = new BehaviorSubject([]);
+  currentRenderItem = this.renderItemsSource.asObservable();
+
+  private categorySource = new BehaviorSubject([]);
+  currentCategorySource = this.categorySource.asObservable();
+
+  changeStartItems(startItems: any) {
+    this.startItemsSource.next(startItems);
+  }
+
+  changeRenderItems(renderedItems: any) {
+    this.renderItemsSource.next(renderedItems);
+  }
+
+  changeCategorySource(categorySource: any) {
+    this.categorySource.next(categorySource)
+    console.log(categorySource)
   }
 }
+
