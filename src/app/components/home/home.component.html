@@ -1,0 +1,24 @@
+<div class="search-container">
+  <select [ngModel]="selected" (ngModelChange)="onChange($event)">
+    <option value="category/electronics">Electronics</option>
+    <option value="category/jewelery">Jewelery</option>
+    <option value="category/men's clothing">Men's clothing</option>
+    <option value="category/women's clothing">Women's clothing</option>
+    <option value="">Show all the items</option>
+  </select>
+
+</div>
+<div class="home">
+  <div class="item" *ngFor="let item of items">
+    <div class="item-image">
+      <img src="{{ item.image }}" alt="" />
+    </div>
+    <div class="item-description">
+      <span class="item-title">{{ item.title }}</span>
+      <span class="item-price">{{ item.price | currency }}</span>
+    </div>
+    <div class="item-buttons">
+      <button class="add-item-button">Add to cart</button>
+    </div>
+  </div>
+</div>
