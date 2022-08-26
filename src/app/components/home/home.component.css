@@ -50,5 +50,9 @@ img {
   color: white;
   font-size: 18px;
   font-weight: bold;
+}
 
+.search-container {
+  display: flex;
+  justify-content: space-around;
 }
