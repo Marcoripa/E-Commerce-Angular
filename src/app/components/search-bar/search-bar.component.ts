@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
+import { HomeComponent } from '../home/home.component';
 
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.css'],
+  providers: [HomeComponent]
 })
 export class SearchBarComponent implements OnInit {
   startItems!: any;
@@ -13,7 +15,7 @@ export class SearchBarComponent implements OnInit {
   input = '';
   categorySource: any = '';
 
-  constructor(private data: DataService) {}
+  constructor(private data: DataService, private home: HomeComponent) {}
 
   ngOnInit(): void {
     this.data.currentStartItems.subscribe(
@@ -22,15 +24,11 @@ export class SearchBarComponent implements OnInit {
     this.data.currentRenderItem.subscribe(
       (renderedItems) => (this.renderedItems = renderedItems)
     );
-    this.data.currentCategorySource.subscribe(
-      (categorySource) => (this.categorySource = categorySource)
-    );
   }
 
   //Call the api with the value taken from the select option
   onChange(event: string) {
-    this.data.changeCategorySource(event);
-    //   this.getItems(event);
+    this.home.getItems(event)
   }
 
   //Grab the value passed in input and pass it to filter the results

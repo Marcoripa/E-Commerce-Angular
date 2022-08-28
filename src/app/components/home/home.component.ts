@@ -8,30 +8,23 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  items: any;
-  renderedItems: any;
-  // category = '';
-  selected = '';
-  input = '';
-  price = '';
   startItems!: any;
-  categorySource: any = '';
+  renderedItems: any;
+  category = '';
 
   constructor(private service: HttpService, private data: DataService) {}
 
   //Fetch data from api using HttpService
-  private getItems(category: string | number) {
+  public getItems(category: string) {
     this.service.getItems(`${category}`).subscribe((res) => {
-      this.startItems = res;
-      this.renderedItems = this.startItems;
       this.data.changeStartItems(res);
-      console.log(this.startItems);
+      this.data.changeRenderItems(res);
     });
   }
 
   ngOnInit(): void {
     //Call the api at the first render of the component
-    this.getItems(this.categorySource);
+    this.getItems(this.category);
 
     this.data.currentStartItems.subscribe(
       (startItems) => (this.startItems = startItems)
@@ -39,9 +32,5 @@ export class HomeComponent implements OnInit {
     this.data.currentRenderItem.subscribe(
       (renderedItems) => (this.renderedItems = renderedItems)
     );
-    this.data.currentCategorySource.subscribe(
-      (categorySource) => (this.categorySource = categorySource)
-    );
   }
-
 }
