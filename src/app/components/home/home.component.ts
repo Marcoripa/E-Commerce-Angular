@@ -9,8 +9,9 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class HomeComponent implements OnInit {
   startItems!: any;
-  renderedItems: any;
+  renderedItems!: any;
   category = '';
+  max = this.findExpensive([1, 2, 4]);
 
   constructor(private service: HttpService, private data: DataService) {}
 
@@ -23,14 +24,23 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+     this.data.currentStartItems.subscribe(
+       (startItems) => (this.startItems = startItems)
+     );
+     this.data.currentRenderItem.subscribe(
+       (renderedItems) => (this.renderedItems = renderedItems)
+     );
+
     //Call the api at the first render of the component
     this.getItems(this.category);
+  }
 
-    this.data.currentStartItems.subscribe(
-      (startItems) => (this.startItems = startItems)
-    );
-    this.data.currentRenderItem.subscribe(
-      (renderedItems) => (this.renderedItems = renderedItems)
-    );
+  findExpensive(arr: any) {
+    const priceArr: number[] = [];
+    arr.forEach((element: any) => {
+      priceArr.push(element.price);
+    });
+
+    return Math.max(...priceArr);
   }
 }

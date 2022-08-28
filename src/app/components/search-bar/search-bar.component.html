@@ -1,39 +1,38 @@
-<nav>
-  <h1 class="logo">Marco's E-commerce</h1>
-  <div class="search-container">
-    <select [ngModel]="selected" (ngModelChange)="onChange($event)" >
-      <option value="category/electronics">Electronics</option>
-      <option value="category/jewelery">Jewelery</option>
-      <option value="category/men's clothing">Men's clothing</option>
-      <option value="category/women's clothing">Women's clothing</option>
-      <option value="">All the items</option>
-    </select>
+<section class="search-container" id="sidebar">
+  <select [ngModel]="selected" (ngModelChange)="onChange($event)">
+    <option value="category/electronics">Electronics</option>
+    <option value="category/jewelery">Jewelery</option>
+    <option value="category/men's clothing">Men's clothing</option>
+    <option value="category/women's clothing">Women's clothing</option>
+    <option value="">All the items</option>
+  </select>
 
-    <form (ngSubmit)="submitInput()" >
-      <input
-        type="text"
-        ngModel
-        name="input"
-        placeholder="What are you looking for?"
-        (ngModelChange)="inputChange($event)"
-        class="search-input"
-      />
-      <button type="submit" class="search-button">search</button>
-    </form>
+  <form (ngSubmit)="submitInput()">
+    <input
+      type="text"
+      ngModel
+      name="input"
+      placeholder="What are you looking for?"
+      (ngModelChange)="inputChange($event)"
+      class="search-input"
+    />
+    <button type="submit" class="search-button">search</button>
+  </form>
 
-    <div>
-      <input
-        type="range"
-        id="volume"
-        name="price"
-        min="min"
-        max="999.99"
-        step="1"
-        ngModel
-        (ngModelChange)="priceChange($event)"
-      />
-
-      <label for="price">Price</label>
-    </div>
+  <div class="price-range">
+    <input
+      type="range"
+      class="price-range-input"
+      name="price"
+      min="{{ min }}"
+      max="{{ max }}"
+      value="24"
+      step="1"
+      oninput="this.nextElementSibling.value = this.value"
+      ngModel
+      (ngModelChange)="priceChange($event)"
+    />
+    <output class="price-range-output">24</output>
+    <label for="price" class="price-range-label">Price</label>
   </div>
-</nav>
+</section>
