@@ -51,7 +51,9 @@ export class HomeComponent implements OnInit {
   }
 
   addItem(id: number) {
+    //Set the total items cart one up
     this.data.changeQuantitySource(this.totalQuantity + 1);
+    //Search in the cart if the selected item exist. If not, create one. Otherwise, add one to the previous quantity
     if (this.cartItems.find((item) => item.id === id) == null) {
       this.cartItems.push({ id, quantity: 1 });
     } else {
@@ -64,7 +66,30 @@ export class HomeComponent implements OnInit {
     }
     console.log(this.cartItems);
   }
+
+  lessItem(id: number) {
+    this.data.changeQuantitySource(this.totalQuantity - 1);
+
+    this.cartItems.forEach((item) => {
+      if (item.id === id) {
+        let index = this.cartItems.indexOf(item);
+        this.cartItems[index] = { ...item, quantity: item.quantity -1 };
+      }
+    });
+
+    console.log(this.cartItems);
+  }
+
   removeItem(id: number) {
-    // this.data.changeQuantitySource(0);
+    this.data.changeQuantitySource(this.totalQuantity - 1);
+
+    this.cartItems.forEach((item) => {
+      if (item.id === id) {
+        let index = this.cartItems.indexOf(item);
+        this.cartItems[index] = { ...item, quantity: 0 };
+      }
+    });
+
+    console.log(this.cartItems);
   }
 }

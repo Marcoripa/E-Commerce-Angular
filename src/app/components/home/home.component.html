@@ -17,9 +17,9 @@
     </ng-template>
     <ng-template #elseBlock > 
       <div class="plusminus-button-area">
-        <button mat-mini-fab color="primary">+</button>
+        <button mat-mini-fab color="primary" (click)="addItem(item.id)">+</button>
         <span>{{itemQuantity}} in cart</span>
-        <button mat-mini-fab color="primary">-</button>
+        <button mat-mini-fab color="primary" (click)="lessItem(item.id)">-</button>
       </div>
       <div class="remove-button-area"><button mat-flat-button color="warn" (click)="removeItem(item.id)">Remove</button></div>
     </ng-template>
