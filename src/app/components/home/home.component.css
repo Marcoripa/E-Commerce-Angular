@@ -27,7 +27,8 @@ img {
 .item-description {
   display: flex;
   padding: 10px;
-  height: 36%;
+  height: 25%;
+  overflow: hidden;
 }
 
 .item-title {
@@ -50,8 +51,19 @@ img {
   color: white;
   font-size: 18px;
   font-weight: bold;
+  margin-top: 25%;
 }
 
-.no-items {
-  margin-top: 250px;
+.add-button-area {
+  display: flex;
+}
+
+.plusminus-button-area{
+display: flex;
+justify-content: center;
+}
+
+.remove-button-area {
+  display: flex;
+  justify-content: center;
 }

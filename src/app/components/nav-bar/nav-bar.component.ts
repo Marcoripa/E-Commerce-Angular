@@ -19,24 +19,6 @@ export class NavBarComponent implements OnInit {
     );
   }
 
-  openNav() {
-    //@ts-ignore
-    document.getElementById('sidebar').style.width = '250px';
-    //@ts-ignore
-    document.getElementById('openNav').style.display = 'none';
-    //@ts-ignore
-    document.getElementById('closeNav').style.display = 'block';
-  }
-
-  closeNav() {
-    //@ts-ignore
-    document.getElementById('sidebar').style.width = '0px';
-    //@ts-ignore
-    document.getElementById('openNav').style.display = 'block';
-    //@ts-ignore
-    document.getElementById('closeNav').style.display = 'none';
-  }
-
   displayStore() {
     if (this.displayStoreToggle) {
       this.displayStoreToggle = false;
