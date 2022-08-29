@@ -12,7 +12,9 @@ export class HomeComponent implements OnInit {
   renderedItems!: any;
   category = '';
   max = this.findExpensive([1, 2, 4]);
-  quantity!: number;
+  totalQuantity!: number;
+  itemQuantity: number = 0;
+  cartItems: { id: number; quantity: number }[] = [];
 
   constructor(private service: HttpService, private data: DataService) {}
 
@@ -32,7 +34,7 @@ export class HomeComponent implements OnInit {
       (renderedItems) => (this.renderedItems = renderedItems)
     );
     this.data.currentQuantitySource.subscribe(
-      (quantity) => (this.quantity = quantity)
+      (totalQuantity) => (this.totalQuantity = totalQuantity)
     );
 
     //Call the api at the first render of the component
@@ -49,6 +51,20 @@ export class HomeComponent implements OnInit {
   }
 
   addItem(id: number) {
-    this.data.changeQuantitySource(this.quantity + 1)
+    this.data.changeQuantitySource(this.totalQuantity + 1);
+    if (this.cartItems.find((item) => item.id === id) == null) {
+      this.cartItems.push({ id, quantity: 1 });
+    } else {
+      this.cartItems.forEach((item) => {
+        if (item.id === id) {
+          let index = this.cartItems.indexOf(item);
+          this.cartItems[index] = { ...item, quantity: item.quantity + 1 };
+        }
+      });
+    }
+    console.log(this.cartItems);
+  }
+  removeItem(id: number) {
+    // this.data.changeQuantitySource(0);
   }
 }

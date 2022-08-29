@@ -1,4 +1,4 @@
-<div class="home">
+<section class="home">
   <div class="item" *ngFor="let item of renderedItems">
     <div class="item-image">
       <img src="{{ item.image }}" alt="" />
@@ -8,20 +8,20 @@
       <span class="item-price">{{ item.price | currency }}</span>
     </div>
     <div
-      *ngIf="quantity == 0; then thenBlock; else elseBlock"
+      *ngIf="!cartItems[item.id - 1]; then thenBlock; else elseBlock"
     ></div>
     <ng-template #thenBlock class="add-button-area">
       <button class="add-item-button" (click)="addItem(item.id)">
         Add to cart
-      </button></ng-template
-    >
+      </button>
+    </ng-template>
     <ng-template #elseBlock > 
       <div class="plusminus-button-area">
         <button mat-mini-fab color="primary">+</button>
-        <span>{{quantity}} in cart</span>
+        <span>{{itemQuantity}} in cart</span>
         <button mat-mini-fab color="primary">-</button>
       </div>
-      <div class="remove-button-area"><button mat-flat-button color="warn">Remove</button></div>
+      <div class="remove-button-area"><button mat-flat-button color="warn" (click)="removeItem(item.id)">Remove</button></div>
     </ng-template>
   </div>
-</div>
+</section>

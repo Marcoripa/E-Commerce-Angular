@@ -11,13 +11,13 @@
   <div class="nav-right">
     <button mat-raised-button>Login</button>
     <button mat-raised-button color="accent">Logout</button>
-    <div *ngIf="quantity > 0; then thenBlock; else elseBlock"></div>
+    <div *ngIf="totalQuantity > 0; then thenBlock; else elseBlock"></div>
     <ng-template #thenBlock>
       <button mat-mini-fab color="primary" (click)="displayStore()">
         <mat-icon style="height: 40px; width: 40px; margin-top: -18%"
           >shopping_cart
         </mat-icon>
-        <div class="cart-quantity">{{quantity}}</div>
+        <div class="cart-quantity">{{ totalQuantity }}</div>
       </button>
     </ng-template>
     <ng-template #elseBlock>
@@ -25,7 +25,7 @@
         <mat-icon style="height: 40px; width: 40px; margin-top: -18%"
           >shopping_cart
         </mat-icon>
-      </button></ng-template
-    >
+      </button>
+    </ng-template>
   </div>
 </nav>

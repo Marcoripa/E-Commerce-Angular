@@ -7,7 +7,7 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./nav-bar.component.css'],
 })
 export class NavBarComponent implements OnInit {
-  quantity!: number;
+  totalQuantity!: number;
   displayStoreToggle: boolean = true;
   displaySearchToggle: boolean = true;
 
@@ -15,7 +15,7 @@ export class NavBarComponent implements OnInit {
 
   ngOnInit(): void {
     this.data.currentQuantitySource.subscribe(
-      (quantity) => (this.quantity = quantity)
+      (totalQuantity) => (this.totalQuantity = totalQuantity)
     );
   }
 
@@ -23,7 +23,7 @@ export class NavBarComponent implements OnInit {
     if (this.displayStoreToggle) {
       this.displayStoreToggle = false;
       //@ts-ignore
-      document.getElementById('store-sidebar').style.width = '250px';
+      document.getElementById('store-sidebar').style.width = '500px';
     } else {
       this.displayStoreToggle = true;
       //@ts-ignore

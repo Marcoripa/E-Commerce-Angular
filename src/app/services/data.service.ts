@@ -14,7 +14,6 @@ export class DataService {
     this.startItemsSource.next(startItems);
   }
 
-
   private renderItemsSource = new BehaviorSubject([]);
   currentRenderItem = this.renderItemsSource.asObservable();
 
@@ -22,14 +21,11 @@ export class DataService {
     this.renderItemsSource.next(renderedItems);
   }
 
+  private quantitySource = new BehaviorSubject(0);
+  currentQuantitySource = this.quantitySource.asObservable();
 
-  private quantitySource = new BehaviorSubject(0)
-  currentQuantitySource = this.quantitySource.asObservable()
-
-  changeQuantitySource(quantity: any) {
-    this.quantitySource.next(quantity)
+  changeQuantitySource(totalQuantity: any) {
+    this.quantitySource.next(totalQuantity);
   }
-
-
 }
 
