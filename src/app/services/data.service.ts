@@ -22,5 +22,14 @@ export class DataService {
     this.renderItemsSource.next(renderedItems);
   }
 
+
+  private quantitySource = new BehaviorSubject(0)
+  currentQuantitySource = this.quantitySource.asObservable()
+
+  changeQuantitySource(quantity: any) {
+    this.quantitySource.next(quantity)
+  }
+
+
 }
 

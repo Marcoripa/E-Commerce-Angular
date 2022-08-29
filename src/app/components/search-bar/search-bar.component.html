@@ -1,4 +1,4 @@
-<section class="search-container" id="sidebar">
+<section id="sidebar">
   <select [ngModel]="selected" (ngModelChange)="onChange($event)">
     <option value="category/electronics">Electronics</option>
     <option value="category/jewelery">Jewelery</option>
@@ -7,7 +7,7 @@
     <option value="">All the items</option>
   </select>
 
-  <form (ngSubmit)="submitInput()">
+  <form (ngSubmit)="submitInput()" class="search">
     <input
       type="text"
       ngModel

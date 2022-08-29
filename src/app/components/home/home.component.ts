@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
   renderedItems!: any;
   category = '';
   max = this.findExpensive([1, 2, 4]);
+  quantity!: number;
 
   constructor(private service: HttpService, private data: DataService) {}
 
@@ -24,12 +25,15 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-     this.data.currentStartItems.subscribe(
-       (startItems) => (this.startItems = startItems)
-     );
-     this.data.currentRenderItem.subscribe(
-       (renderedItems) => (this.renderedItems = renderedItems)
-     );
+    this.data.currentStartItems.subscribe(
+      (startItems) => (this.startItems = startItems)
+    );
+    this.data.currentRenderItem.subscribe(
+      (renderedItems) => (this.renderedItems = renderedItems)
+    );
+    this.data.currentQuantitySource.subscribe(
+      (quantity) => (this.quantity = quantity)
+    );
 
     //Call the api at the first render of the component
     this.getItems(this.category);
@@ -42,5 +46,9 @@ export class HomeComponent implements OnInit {
     });
 
     return Math.max(...priceArr);
+  }
+
+  addItem(id: number) {
+    this.data.changeQuantitySource(this.quantity + 1)
   }
 }

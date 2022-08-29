@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { HomeComponent } from '../home/home.component';
-import { NavBarComponent } from '../nav-bar/nav-bar.component';
 
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.css'],
-  providers: [HomeComponent, NavBarComponent],
+  providers: [HomeComponent],
 })
 export class SearchBarComponent implements OnInit {
   startItems!: any;
@@ -75,7 +74,5 @@ export class SearchBarComponent implements OnInit {
 
     return Math.max(...priceArr);
   }
-
-  
 }
 

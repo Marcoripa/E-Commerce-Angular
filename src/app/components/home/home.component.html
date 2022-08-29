@@ -8,7 +8,7 @@
       <span class="item-price">{{ item.price | currency }}</span>
     </div>
     <div class="item-buttons">
-      <button class="add-item-button">Add to cart</button>
+      <button class="add-item-button" (click)="addItem(item.id)">Add to cart</button>
     </div>
   </div>
 </div>

@@ -1,4 +1,36 @@
 <nav>
+  <div class="nav-left">
+    <span
+      id="openNav"
+      style="font-size: 30px; cursor: pointer"
+      (click)="openNav()"
+      >&#9776;Search</span
+    >
+    <span
+      id="closeNav"
+      style="font-size: 30px; cursor: pointer; display: none"
+      (click)="closeNav()"
+      >&#9776;</span
+    >
     <h1 class="logo">Marco's E-commerce</h1>
-    <span style="font-size:30px;cursor:pointer" (click)="openNav()">&#9776; open</span>
+  </div>
+  <div class="nav-right">
+    <button mat-raised-button>Login</button>
+    <button mat-raised-button color="accent">Logout</button>
+    <div *ngIf="quantity > 0; then thenBlock; else elseBlock"></div>
+    <ng-template #thenBlock>
+      <button mat-mini-fab color="primary" (click)="displayStore()">
+        <mat-icon style="height: 40px; width: 40px; margin-top: -18%"
+          >shopping_cart
+        </mat-icon>
+      </button>
+    </ng-template>
+    <ng-template #elseBlock>
+      <button mat-mini-fab color="primary" disabled>
+        <mat-icon style="height: 40px; width: 40px; margin-top: -18%"
+          >shopping_cart
+        </mat-icon>
+      </button></ng-template
+    >
+  </div>
 </nav>

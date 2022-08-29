@@ -8,4 +8,23 @@ nav {
   z-index: 4;
   justify-content: space-between;
   align-items: center;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  color: #fff;
+  margin-left: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+button {
+  margin-left: 1rem;
 }
