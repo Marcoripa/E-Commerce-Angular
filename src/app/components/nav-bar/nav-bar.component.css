@@ -28,3 +28,18 @@ nav {
 button {
   margin-left: 1rem;
 }
+
+.cart-quantity {
+  color: white;
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: "translate(25%, 25%)";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  background-color: red;
+}

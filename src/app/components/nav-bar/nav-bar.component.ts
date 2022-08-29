@@ -9,6 +9,7 @@ import { DataService } from 'src/app/services/data.service';
 export class NavBarComponent implements OnInit {
   quantity!: number;
   displayStoreToggle: boolean = true;
+  displaySearchToggle: boolean = true;
 
   constructor(private data: DataService) {}
 
@@ -46,6 +47,17 @@ export class NavBarComponent implements OnInit {
       //@ts-ignore
       document.getElementById('store-sidebar').style.width = '0px';
     }
-    console.log(this.displayStoreToggle);
+  }
+
+  displaySearch() {
+    if (this.displaySearchToggle) {
+      this.displaySearchToggle = false;
+      //@ts-ignore
+      document.getElementById('sidebar').style.width = '250px';
+    } else {
+      this.displaySearchToggle = true;
+      //@ts-ignore
+      document.getElementById('sidebar').style.width = '0px';
+    }
   }
 }

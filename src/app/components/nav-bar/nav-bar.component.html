@@ -3,14 +3,8 @@
     <span
       id="openNav"
       style="font-size: 30px; cursor: pointer"
-      (click)="openNav()"
+      (click)="displaySearch()"
       >&#9776;Search</span
-    >
-    <span
-      id="closeNav"
-      style="font-size: 30px; cursor: pointer; display: none"
-      (click)="closeNav()"
-      >&#9776;</span
     >
     <h1 class="logo">Marco's E-commerce</h1>
   </div>
@@ -23,6 +17,7 @@
         <mat-icon style="height: 40px; width: 40px; margin-top: -18%"
           >shopping_cart
         </mat-icon>
+        <div class="cart-quantity">{{quantity}}</div>
       </button>
     </ng-template>
     <ng-template #elseBlock>
