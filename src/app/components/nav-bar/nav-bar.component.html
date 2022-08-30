@@ -4,13 +4,18 @@
       id="openNav"
       style="font-size: 30px; cursor: pointer"
       (click)="displaySearch()"
-      >&#9776;Search</span
+      ><mat-icon class="search-icon">search</mat-icon></span
     >
-    <h1 class="logo">Marco's E-commerce</h1>
+  </div>
+  <div class="nav-center">
+    <h1 class="logo">MARCO'S ANGULAR E-COMMERCE</h1>
   </div>
   <div class="nav-right">
-    <button mat-raised-button>Login</button>
-    <button mat-raised-button color="accent">Logout</button>
+    <button mat-flat-button class="login-button">
+      <mat-icon class="account-icon">account_circle</mat-icon>Login
+    </button>
+    <button mat-flat-button class="signup-button">
+      <mat-icon class="lock-icon">lock</mat-icon>Signup</button>
     <div *ngIf="totalQuantity > 0; then thenBlock; else elseBlock"></div>
     <ng-template #thenBlock>
       <button mat-mini-fab color="primary" (click)="displayStore()">

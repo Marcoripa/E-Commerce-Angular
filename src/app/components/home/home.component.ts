@@ -57,7 +57,7 @@ export class HomeComponent implements OnInit {
     if (this.cartItems.find((item) => item.id === id) == null) {
       this.cartItems.push({ id, quantity: 1 });
     } else {
-      this.cartItems.forEach((item) => {
+      this.cartItems.find((item) => {
         if (item.id === id) {
           let index = this.cartItems.indexOf(item);
           this.cartItems[index] = { ...item, quantity: item.quantity + 1 };
@@ -70,26 +70,27 @@ export class HomeComponent implements OnInit {
   lessItem(id: number) {
     this.data.changeQuantitySource(this.totalQuantity - 1);
 
-    this.cartItems.forEach((item) => {
+    this.cartItems.find((item) => {
       if (item.id === id) {
         let index = this.cartItems.indexOf(item);
         this.cartItems[index] = { ...item, quantity: item.quantity -1 };
       }
     });
-
-    console.log(this.cartItems);
   }
 
   removeItem(id: number) {
-    this.data.changeQuantitySource(this.totalQuantity - 1);
-
-    this.cartItems.forEach((item) => {
+    
+    this.cartItems.find((item) => {
       if (item.id === id) {
+        
         let index = this.cartItems.indexOf(item);
+         this.data.changeQuantitySource(
+           this.totalQuantity - this.cartItems[index].quantity
+         );
+         console.log(this.cartItems[index].quantity);
         this.cartItems[index] = { ...item, quantity: 0 };
+       
       }
     });
-
-    console.log(this.cartItems);
   }
 }
